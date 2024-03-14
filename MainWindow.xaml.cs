@@ -41,17 +41,13 @@ namespace AudioPlaer
             {
                 files = Directory.GetFiles(dialog.FileName)
                     .Select(item => new FileInfo(item))
-                    .OrderBy(file => !IsAudioFile(file.Extension.ToLower()))
-                    .ThenBy(file => file.Name)
+                    .Where(file => IsAudioFile(file.Extension.ToLower()))
                     .ToList();
 
-                var displayNames = files.Select(file => file.Name);
-                music.ItemsSource = displayNames;
-                //music.ItemsSource = files;
-                /*foreach (string file)
-                {
-                    FileTxt.Text += file + "\n";
-                }*/
+                /*var displayNames = files.Select(file => file.Name);
+                music.ItemsSource = displayNames;*/
+                music.ItemsSource = files;
+                
                 if (files.Count > 0)
                 {
                     SoundIndex = 0;

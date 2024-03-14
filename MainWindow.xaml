@@ -36,5 +36,6 @@
 
         <Button x:Name="BtPovtor" Grid.Column="3" Grid.Row="3"  Content="↻" VerticalAlignment="Center" FontWeight="Bold" Click="Povtor"/>
         <Button Grid.Column="4" Grid.Row="3"  Content="Случайно" VerticalAlignment="Center"/>
+        <ListBox d:ItemsSource="{d:SampleData ItemCount=0}" x:Name="music" Grid.Row="1" Grid.ColumnSpan="6"/>
     </Grid>
 </Window>
