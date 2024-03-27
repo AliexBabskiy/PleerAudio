@@ -5,6 +5,7 @@ using System.Data.Common;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -26,12 +27,14 @@ namespace AudioPlaer
         List<FileInfo> files = new List<FileInfo>();
         bool Plaing = false;
         bool povtor = false;
+        bool rand = false;
         int SoundIndex = 0;
         public MainWindow()
         {
             InitializeComponent();
             music.DisplayMemberPath = "Name";
         }
+
         private void VibPapka(object sender, RoutedEventArgs e)
         {
             CommonOpenFileDialog dialog = new CommonOpenFileDialog { IsFolderPicker = true};
@@ -44,20 +47,39 @@ namespace AudioPlaer
                     .Where(file => IsAudioFile(file.Extension.ToLower()))
                     .ToList();
 
-                /*var displayNames = files.Select(file => file.Name);
-                music.ItemsSource = displayNames;*/
                 music.ItemsSource = files;
                 
                 if (files.Count > 0)
                 {
                     SoundIndex = 0;
+                    PlaySelectedSong();
                 }
             }
         }
 
+        private void PlaySelectedSong()
+        {
+            string selectedAudioPath = files[SoundIndex].FullName;
+            media.Source = new Uri(selectedAudioPath);
+            media.Play();
+            Plaing = true;
+        }
+
         private void playSound(object sender, RoutedEventArgs e)
         {
-           
+            if (media.Source != null)
+            {
+                if (Plaing)
+                {
+                    media.Pause();
+                }
+                else
+                {
+                    media.Play();
+                }
+
+                Plaing = !Plaing;
+            }
         }
 
         private void Nazad(object sender, RoutedEventArgs e)
@@ -70,6 +92,8 @@ namespace AudioPlaer
             {
                 SoundIndex = files.Count - 1;
             }
+
+            PlaySelectedSong();
         }
 
         private void Vpered(object sender, RoutedEventArgs e)
@@ -83,18 +107,12 @@ namespace AudioPlaer
                 SoundIndex = 0;
             }
 
+            PlaySelectedSong();
         }
 
         private void Povtor(object sender, RoutedEventArgs e)
         {
-            if (povtor == false)
-            {
-                povtor = true;
-            }
-            else
-            {
-                povtor = false;
-            }
+            povtor = !povtor;
         }
 
         private void audioSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -109,6 +127,23 @@ namespace AudioPlaer
         {
             return extension == ".mp3" || extension == ".m4a" || extension == ".wav";
         }
+
+        private void RandBt(object sender, RoutedEventArgs e)
+        {
+            if (!rand)
+            {
+                Random value = new Random();
+                files = files.OrderBy(x => value.Next()).ToList();
+                rand = true;
+            }
+            else
+            {
+                files = files.OrderBy(file => file.Name).ToList();
+                rand = false;
+            }
+
+            SoundIndex = 0;
+            PlaySelectedSong();
+        }
     }
 }
-//можно немного времени на доработку

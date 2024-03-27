@@ -12,6 +12,7 @@
             <RowDefinition/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -21,21 +22,24 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        
+
         <Button x:Name="ViborPapki" Content="Выбор папки с музыкой" VerticalAlignment="Center" Grid.ColumnSpan="3" Click="VibPapka"/>
-        <Button Grid.Column="3" Content="История" VerticalAlignment="Center" Grid.ColumnSpan="3"/>
+        <Button x:Name="BtHistori" Grid.Column="3" Content="История" VerticalAlignment="Center" Grid.ColumnSpan="3"/>
 
         <TextBlock x:Name="FileTxt" Grid.Row="1" Grid.ColumnSpan="5" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
 
+        <TextBlock x:Name="NowTime" Height="19" Margin="10,0,0,0" Grid.Row="2" Text="" VerticalAlignment="Center"/>
+        <TextBlock x:Name="OstTime" Height="19" Margin="10,0,0,0" Grid.Row="2" Grid.Column="1" Text="" VerticalAlignment="Center"/>
+
         <MediaElement x:Name="media" LoadedBehavior="Manual" MediaOpened="media_MediaOpened"/>
-        <Slider x:Name="audioSlider" Grid.Row="2" Grid.ColumnSpan="6" ValueChanged="audioSlider_ValueChanged"/>
+        <Slider x:Name="audioSlider" Grid.Row="3" Grid.ColumnSpan="6" ValueChanged="audioSlider_ValueChanged"/>
 
-        <Button x:Name="BtNazad" Grid.Row="3" Content="Назад" VerticalAlignment="Center" Click="Nazad"/>
-        <Button x:Name="BtPlay" Grid.Column="1" Grid.Row="3"  Content="▶ ❚❚" VerticalAlignment="Center" Click="playSound"/>
-        <Button x:Name="BtVpered" Grid.Column="2" Grid.Row="3"  Content="Вперёд" VerticalAlignment="Center" Click="Vpered"/>
+        <Button x:Name="BtNazad" Grid.Row="4" Content="Назад" VerticalAlignment="Center" Click="Nazad"/>
+        <Button x:Name="BtPlay" Grid.Column="1" Grid.Row="4"  Content="▶ ❚❚" VerticalAlignment="Center" Click="playSound"/>
+        <Button x:Name="BtVpered" Grid.Column="2" Grid.Row="4"  Content="Вперёд" VerticalAlignment="Center" Click="Vpered"/>
 
-        <Button x:Name="BtPovtor" Grid.Column="3" Grid.Row="3"  Content="↻" VerticalAlignment="Center" FontWeight="Bold" Click="Povtor"/>
-        <Button Grid.Column="4" Grid.Row="3"  Content="Случайно" VerticalAlignment="Center"/>
+        <Button x:Name="BtPovtor" Grid.Column="3" Grid.Row="4"  Content="↻" VerticalAlignment="Center" FontWeight="Bold" Click="Povtor"/>
+        <Button x:Name="BtRand" Grid.Column="4" Grid.Row="4"  Content="Случайно" VerticalAlignment="Center" Click="RandBt"/>
         <ListBox d:ItemsSource="{d:SampleData ItemCount=0}" x:Name="music" Grid.Row="1" Grid.ColumnSpan="6"/>
     </Grid>
 </Window>

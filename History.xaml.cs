@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace AudioPlaer
 {
     /// <summary>
-    /// Логика взаимодействия для Histori.xaml
+    /// Логика взаимодействия для History.xaml
     /// </summary>
-    public partial class Histori : Window
+    public partial class History : Window
     {
-        public Histori()
+        public History()
         {
             InitializeComponent();
         }

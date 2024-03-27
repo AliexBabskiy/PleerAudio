@@ -18,5 +18,5 @@ C:\Users\Александр\source\repos\AudioPlaer\AudioPlaer\bin\Debug\Microso
 C:\Users\Александр\source\repos\AudioPlaer\AudioPlaer\bin\Debug\Microsoft.WindowsAPICodePack.xml
 C:\Users\Александр\source\repos\AudioPlaer\AudioPlaer\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
 C:\Users\Александр\source\repos\AudioPlaer\AudioPlaer\obj\Debug\AudioPlaer.csproj.CopyComplete
-C:\Users\Александр\source\repos\AudioPlaer\AudioPlaer\obj\Debug\Histori.g.cs
-C:\Users\Александр\source\repos\AudioPlaer\AudioPlaer\obj\Debug\Histori.baml
+C:\Users\Александр\source\repos\AudioPlaer\AudioPlaer\obj\Debug\History.g.cs
+C:\Users\Александр\source\repos\AudioPlaer\AudioPlaer\obj\Debug\History.baml
